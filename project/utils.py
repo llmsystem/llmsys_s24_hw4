@@ -11,7 +11,6 @@ import numpy as np
 
 cousin_dir = Path(__file__).resolve().parents[1]
 
-PYTEST = False
 
 def get_tokenizer(examples, vocab_size, src_key, tgt_key, workdir):
     tokenizer = ByteLevelBPETokenizer()
@@ -145,9 +144,6 @@ def train(model, optimizer, examples, batch_size, collate_fn, desc, rank=0, aver
         raise NotImplementedError("Data Parallel Not Implemented Yet")
         # END SOLUTION
         optimizer.step()
-        if PYTEST:
-            save_grad_weights(model, rank)
-            break
         batch_time = time.time() - t0
         tokens = np.prod(batch['input_ids'].shape)
         tokens_per_sec.append(tokens / batch_time)

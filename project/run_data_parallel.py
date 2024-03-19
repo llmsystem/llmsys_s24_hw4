@@ -157,6 +157,7 @@ def run_dp(
                 {'validation_loss': validation_loss, **eval_scores, 'training_time': training_time, 'tokens_per_sec': avg_tokens_per_sec},
                 open(f'{workdir}/rank{rank}_results_epoch{epoch_idx}.json', 'w'))
         else:
+            save_grad_weights(model, rank)
             break
     if not PYTEST:
         # You only get the average training time and tokens_per_second per device
