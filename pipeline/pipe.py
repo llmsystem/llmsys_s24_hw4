@@ -44,7 +44,7 @@ class Pipe(nn.Module):
 
     # ASSIGNMENT 4.2
     def forward(self, x):
-        ''' Forward the input x through the pipeline.
+        ''' Forward the input x through the pipeline. The return value should be put in the last device.
 
         Hint:
         1. Divide the input mini-batch into micro-batches.
